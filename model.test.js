@@ -23,14 +23,12 @@ test('model', (t) => {
     d: 'sw',
     e: 'ja',
     f: { countries: [] },
-    g: { countries: [] },
-    h: { countries: [] },
-    i: { countries: ['Sweden', 'Switzerland'] },
-    j: { countries: ['Japan'] },
+    g: { countries: ['Sweden', 'Switzerland'] },
+    h: { countries: ['Japan'] },
   };
 
   const e1 = scheduler.createHotObservable('--a--b-c--d--e--|', values);
-  const expected =                         '--f--g-h--i--j--|';
+  const expected =                         'f-f--f-f--g--h--|';
 
   scheduler.expectObservable(model(e1, COUNTRIES)).toBe(expected, values);
   scheduler.flush();

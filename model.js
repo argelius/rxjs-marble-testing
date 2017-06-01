@@ -10,7 +10,8 @@ function model(query$, COUNTRIES) {
       return {
         countries,
       };
-    });
+    })
+    .startWith({ countries: [] });
 }
 
 export default model;

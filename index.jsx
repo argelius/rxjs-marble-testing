@@ -19,7 +19,7 @@ class App extends React.PureComponent {
     if (this.textInput) {
       const query$ = Observable
         .fromEvent(this.textInput, 'keyup')
-        .debounceTime(100)
+        .debounceTime(300)
         .map(e => e.target.value);
 
       this.state$ = model(
@@ -32,7 +32,9 @@ class App extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.state$.unsubscribe();
+    if (this.state$) {
+      this.state$.unsubscribe();
+    }
   }
 
   render() {
